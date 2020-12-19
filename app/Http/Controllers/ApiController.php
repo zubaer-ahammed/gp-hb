@@ -254,9 +254,22 @@ class ApiController extends Controller
 
        } else {
 
-           $room = Room::create($request->all());
+           $room_number = $request->get('room_number');
 
-           return $this->prepareResult(true, $room, $error['errors'],"Room created");
+           $room = Room::where(['room_number' => $room_number])->first();
+
+           if( empty($room) ) {
+
+               $room = Room::create($request->all());
+
+               return $this->prepareResult(true, $room, $error['errors'],"Room created");
+
+
+           }
+
+           $error['errors'] = "Room already exists with this number";
+           return $this->prepareResult(true, [], $error['errors'],"Room creation result");
+
 
        }
 
@@ -384,9 +397,23 @@ class ApiController extends Controller
 
         } else {
 
-            $customer = Customer::create($request->all());
 
-            return $this->prepareResult(true, $customer, $error['errors'],"Customer created");
+            $email = $request->get('email');
+
+            $customer = Customer::where(['email' => $email])->first();
+
+            if(empty($customer)) {
+
+                $customer = Customer::create($request->all());
+                return $this->prepareResult(true, $customer, $error['errors'],"Customer created");
+
+            } else {
+
+                $error['errors'] = "Customer already exists with this email";
+                return $this->prepareResult(true, [], $error['errors'],"Customer creation result");
+
+            }
+
 
         }
 
