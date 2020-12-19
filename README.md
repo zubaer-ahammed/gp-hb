@@ -1,6 +1,6 @@
 ## Installation
 
-1. This is a Laravel project created with Laravel Framework 8.19.0.
+1. This is a Laravel project created with Laravel Framework 8.19.0. I have used Laravel Passport for Authentication (Bearer Access Token) and MySQL as database.
 2. Please run the following commands after cloning master branch.
 3. Run: `composer install`
 4. Run: `php artisan migrate`
