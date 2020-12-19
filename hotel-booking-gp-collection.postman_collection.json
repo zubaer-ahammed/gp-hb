@@ -96,93 +96,6 @@
 			"response": []
 		},
 		{
-			"name": "Get A Customer with Email",
-			"protocolProfileBehavior": {
-				"disabledSystemHeaders": {
-					"accept": true
-				}
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": {
-						"token": "{{access_token}}"
-					}
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "Accept",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"url": "http://hotel-booking-gp.test/api/customer/1"
-			},
-			"response": []
-		},
-		{
-			"name": "Get A Customer Along with Bookings",
-			"protocolProfileBehavior": {
-				"disabledSystemHeaders": {
-					"accept": true
-				}
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": {
-						"token": "{{access_token}}"
-					}
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "Accept",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"url": "http://hotel-booking-gp.test/api/customer/1"
-			},
-			"response": []
-		},
-		{
-			"name": "Create Booking",
-			"protocolProfileBehavior": {
-				"disabledSystemHeaders": {
-					"accept": true
-				}
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": {
-						"token": "{{access_token}}"
-					}
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"room_number\": \"201\",\n    \"arrival\": \"2020-12-20 16:16:01\",\n    \"checkout\": \"2020-12-25 12:00:00\",\n    \"book_type\": \"partial\",\n    \"book_time\": \"2020-12-19 16:16:01\",\n    \"customer_id\": \"1\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": "http://hotel-booking-gp.test/api/booking"
-			},
-			"response": []
-		},
-		{
 			"name": "Create Room",
 			"protocolProfileBehavior": {
 				"disabledSystemHeaders": {
@@ -240,6 +153,93 @@
 					}
 				],
 				"url": "http://hotel-booking-gp.test/api/customer/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Get A Customer with Email",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": "http://hotel-booking-gp.test/api/customer/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Get A Customer Along with Bookings",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": "http://hotel-booking-gp.test/api/customer/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Create A Booking",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"room_number\": \"201\",\n    \"arrival\": \"2020-12-20 16:16:01\",\n    \"checkout\": \"2020-12-25 12:00:00\",\n    \"book_type\": \"partial\",\n    \"book_time\": \"2020-12-19 16:16:01\",\n    \"customer_id\": \"1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://hotel-booking-gp.test/api/booking"
 			},
 			"response": []
 		},
