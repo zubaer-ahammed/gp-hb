@@ -501,13 +501,40 @@ class ApiController extends Controller
 
         $error = $this->validations($request,"create booking");
 
+        $booking = [];
+
         if ($error['error']) {
 
             return $this->prepareResult(false, [], $error['errors'],"Error in creating booking");
 
         } else {
 
-            $booking = Booking::create($request->all());
+            $room_number = $request->get('room_number');
+
+            $room = Room::where(['room_number' => $room_number])->first();
+
+            if(!empty($room)) {
+
+                $is_locked = $room->locked == 'yes' ? true : false;
+
+                if($is_locked) {
+
+                    $error['errors'] = "This room is already taken!";
+
+                } else {
+
+                    $booking = Booking::create($request->all());
+                    Room::where(['room_number' => $room_number])->update(['locked' => 'yes']);
+
+                }
+
+            } else {
+
+                $error['errors'] = "Room doesn't exist with this number";
+
+            }
+
+
 
             return $this->prepareResult(true, $booking, $error['errors'],"Booking created");
 
@@ -744,6 +771,14 @@ class ApiController extends Controller
         Booking::where(['customer_id' => $customer_id])->update(['book_type' => 'complete', 'checkout' => date('Y-m-d H:i:s')]);
 
         $bookings = Booking::where(['customer_id' => $customer_id])->get();
+
+        //Now unlock the rooms
+        foreach ($bookings as $booking) {
+
+            Room::where(['room_number' => $booking->room_number])->update(['locked' => 'no']);
+
+        }
+
 
         return $this->prepareResult(true, $bookings, [],"Checkout Complete");
 
