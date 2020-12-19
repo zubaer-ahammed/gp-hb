@@ -18,7 +18,7 @@ class CreateBookingsTable extends Migration
             $table->string('room_number');
             $table->dateTime('arrival');
             $table->dateTime('checkout');
-            $table->string('book_type');
+            $table->string('book_type')->default('partial');
             $table->dateTime('book_time');
             $table->timestamps();
         });
